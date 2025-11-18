@@ -1,0 +1,24 @@
+services:
+  firefox:
+    image: lscr.io/linuxserver/firefox:latest
+
+    network_mode: container:gluetun
+    security_opt:
+      - seccomp:unconfined #optional
+    devices:
+      - /dev/dri:/dev/dri/renderD128
+    environment:
+      - PUID=568
+      - PGID=568
+      - TZ=America/Los_Angeles
+      - FIREFOX_CLI=https://www.ip.me/ #optional
+      - CUSTOM_HTTPS_PORT=3002
+      - DRINODE=/dev/dri/renderD128
+      - device='/dev/dri'
+    volumes:
+      - /mnt/SSD_pool/My_App_Data/firefox:/config
+    #    ports:
+    #      - 3000:3000
+    #      - 3001:300
+   # shm_size: 2gb
+    restart: unless-stopped
