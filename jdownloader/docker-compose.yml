@@ -1,0 +1,7 @@
+services:
+  jdownloader-2:
+    image: jlesage/jdownloader-2
+    network_mode: container:gluetun
+    volumes:
+      - "/mnt/SSD_pool/My_App_Data/jdownloader:/config:rw"
+      - "/mnt/NAS10Tb108/public_video/jdownloader:/output:rw"
